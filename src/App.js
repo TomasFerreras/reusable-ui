@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.scss";
 
-function App() {
+// Components
+import Job from "./components/job";
+// Data
+import { jobsAvailable } from "./data/data";
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="main">
+      <div className="container">
+        <div className="job-container">
+          {jobsAvailable.map((job, index) => {
+            return (
+              <Job Company={job.company} Title={job.title} Location={job.location} DatePosted={job.date}/>
+            )
+            })}
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
